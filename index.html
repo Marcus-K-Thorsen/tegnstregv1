@@ -12,13 +12,13 @@
   let green = 210
   let blue = 51
   function branch(length, angle, scale) {
+    //cx.fillStyle = "rgb(227,210,51)"
+    cx.fillStyle = `rgb(${red},${green},${blue})`
     cx.fillRect(0, 0, 1, length)
     if (length<8) return
     cx.save()
     cx.translate(0,length)
     cx.rotate(-angle)
-    //cx.fillStyle = "rgb(227,210,51)"
-    cx.fillStyle = `rgb(${red},${green},${blue})`
     branch(length*scale, angle, scale)
     cx.rotate(2*angle)
     branch(length*scale, angle, scale)
