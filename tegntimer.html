@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tegn streg start</title>
+</head>
+<body>
+
+<canvas width="600" height="400"></canvas>
+
+<script>
+  let cx = document.querySelector("canvas").getContext("2d");
+
+  red = 0;
+  green = 0;
+  blue = 0;
+
+  function setColors() {
+    let ran = Math.random();
+    red = Math.round(ran*255);
+    ran = Math.random();
+    green = Math.round(ran*255);
+    ran = Math.random();
+    blue = Math.round(ran*255);
+    //console.log("color =" + `rgb(${red},${green},${blue}`);
+  }
+
+  let angle = 0.1
+  function kaldBranch() {
+    angle +=  0.1
+    branch(60, angle, 0.8);
+  }
+
+  function branch(length, angle, scale) {
+    setColors();
+    cx.fillStyle = `rgb(${red},${green},${blue}`;
+    cx.fillRect(0, 0, 2, length);
+    if (length<8) return;
+    cx.save();
+    cx.translate(0, length);
+    cx.rotate(-angle);
+    branch(length*scale, angle, scale);
+    cx.rotate(2*angle)
+    branch(length*scale, angle, scale)
+    cx.restore()
+
+  }
+  cx.translate(200, 70);
+  setInterval(kaldBranch, 1000);
+
+</script>
+
+
+</body>
+</html>
