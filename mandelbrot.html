@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Fractal Drawing with Canvas</title>
+</head>
+<body>
+<canvas id="fractalCanvas"></canvas>
+<script>
+  const canvas = document.getElementById('fractalCanvas');
+  const ctx = canvas.getContext('2d');
+
+  const maxIterations = 200;
+  const zoom = 300;
+  const centerX = -0.75;
+  const centerY = 0;
+
+  function mandelbrot(x, y) {
+    let real = x;
+    let imaginary = y;
+    let n = 0;
+    while (n < maxIterations) {
+      const r2 = real * real;
+      const i2 = imaginary * imaginary;
+      if (r2 + i2 > 4) {
+        break;
+      }
+      imaginary = 2 * real * imaginary + y;
+      real = r2 - i2 + x;
+      n++;
+    }
+    return n;
+  }
+
+  for (let x = 0; x < canvas.width; x++) {
+    for (let y = 0; y < canvas.height; y++) {
+      const real = (x - canvas.width / 2) / zoom + centerX;
+      const imaginary = (y - canvas.height / 2) / zoom + centerY;
+      const iterations = mandelbrot(real, imaginary);
+      const color = iterations == maxIterations ? '#000' : `hsl(0, 0%, ${iterations}%)`;
+      ctx.fillStyle = color;
+      ctx.fillRect(x, y, 1, 1);
+    }
+  }
+</script>
+</body>
+</html>

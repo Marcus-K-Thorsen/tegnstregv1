@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<canvas width="600" height="300"></canvas>
+<script>
+  const cx = document.querySelector("canvas").getContext("2d")
+  let red = 2
+  let green = 211
+  let blue = 51
+  let lilla = 11111
+  function drawFractal(x, y, size, depth) {
+    if (depth === 0) {
+        return;
+      }
+    cx.fillRect(x, y, size, size);
+    drawFractal(x, y, size / 3, depth - 1);
+    drawFractal(x + size * 2 / 3, y, size / 3, depth - 1);
+    drawFractal(x, y + size * 2 / 3, size / 3, depth - 1);
+    drawFractal(x + size * 2 / 3, y + size * 2 / 3, size / 3, depth - 1);
+  }
+  //cx.translate(200,0)
+  drawFractal(0, 0, cx.width, 5);
+
+</script>
+</body>
+</html>

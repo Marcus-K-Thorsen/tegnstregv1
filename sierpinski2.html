@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sierpinski Triangle Drawing with Canvas</title>
+</head>
+<body>
+<canvas id="fractalCanvas" width="800" height="1200"></canvas>
+<script>
+  const canvas = document.getElementById('fractalCanvas');
+  const ctx = canvas.getContext('2d');
+
+  const depth = 7;
+  const side = canvas.width / (1 << depth) + 500;
+  console.log(side)
+
+
+
+  function drawSierpinski(x, y, size, depth) {
+    if (depth == 0) {
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x + size, y);
+      ctx.lineTo(x + size / 2, y + size * Math.sqrt(3) / 2);
+      ctx.closePath();
+      ctx.stroke();
+    } else {
+      const halfSize = size / 2;
+      drawSierpinski(x, y, halfSize, depth - 1);
+      drawSierpinski(x + halfSize, y, halfSize, depth - 1);
+      drawSierpinski(x + halfSize / 2, y + halfSize * Math.sqrt(3) / 2, halfSize, depth - 1);
+    }
+  }
+
+  //ctx.strokeStyle = '#000';
+  ctx.strokeStyle = '#ff0000';
+  drawSierpinski(0, 0, side, depth);
+</script>
+</body>
+</html>
