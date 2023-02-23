@@ -9,9 +9,11 @@
 <script>
   const canvas = document.getElementById('fractalCanvas');
   const ctx = canvas.getContext('2d');
+  canvas.width = window.outerWidth
+  canvas.height = window.innerHeight
 
   const depth = 7;
-  const side = canvas.width / (1 << depth) + 500;
+  const side = canvas.width / (1 << depth) + 1000;
   console.log(side)
 
   red = 0;

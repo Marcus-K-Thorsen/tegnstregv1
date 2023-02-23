@@ -6,9 +6,11 @@
 </head>
 <body>
 
-<canvas width="600" height="400"></canvas>
+<canvas width="1900" height="800"></canvas>
 
 <script>
+  //canvas.width = window.innerWidth
+  //canvas.height = window.innerHeight
   let cx = document.querySelector("canvas").getContext("2d");
 
   red = 0;
@@ -28,7 +30,9 @@
   let angle = 0.1
   function kaldBranch() {
     angle +=  0.1
-    branch(60, angle, 0.8);
+    cx.translate(10,10)
+    cx.rotate(5)
+    branch(160, angle, 0.8);
   }
 
   function branch(length, angle, scale) {
@@ -45,7 +49,7 @@
     cx.restore()
 
   }
-  cx.translate(200, 70);
+  cx.translate(600, 70);
   setInterval(kaldBranch, 1000);
 
 </script>

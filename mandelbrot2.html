@@ -5,10 +5,13 @@
   <title>Fractal Drawing with Canvas</title>
 </head>
 <body>
-<canvas id="fractalCanvas" width="900" height="1200"></canvas>
+<canvas id="fractalCanvas"></canvas>
 <script>
   const canvas = document.getElementById('fractalCanvas');
   const ctx = canvas.getContext('2d');
+
+  canvas.width = window.outerWidth
+  canvas.height = window.innerHeight
 
   const maxIterations = 200;
   const zoom = 300;

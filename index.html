@@ -5,8 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-<canvas width="600" height="300"></canvas>
+<canvas width="1200" height="800"></canvas>
 <script>
+//    canvas.width = window.outerWidth
+//    canvas.height = window.innerHeight
   const cx = document.querySelector("canvas").getContext("2d")
   let red = 2
   let green = 211
@@ -25,8 +27,8 @@
     branch(length*scale, angle, scale)
     cx.restore()
   }
-  cx.translate(200,0)
-  branch(60, 0.5, 0.8)
+  cx.translate(500,0)
+  branch(160, 0.5, 0.8)
 
 </script>
 </body>
